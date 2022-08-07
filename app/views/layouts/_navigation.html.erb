@@ -1,0 +1,24 @@
+    <nav class="navbar navbar-expand-lg bg-dark">
+      <div class="container-fluid text-light">
+        <%= link_to 'FOXR ALPHA BLOG', root_path, class: "navbar-brand text-light", id: "logo" %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" style="fill: white; transform: ;msFilter:;">
+            <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
+          </svg>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <%= link_to 'Articles', articles_path(), class: "nav-link text-light" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'New Post', new_article_path(), class: "nav-link text-light" %>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>

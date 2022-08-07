@@ -1,0 +1,25 @@
+<h1 class="text-center mt-4 fw-bold"><%= @article.title %></h1>
+
+<div class="row justify-content-center mx-2">
+<div class="col-lg-5 my-2 mx-2">
+    <div class="card text-center shadow">
+    <div class="card-header fst-italic">
+        by Nathan Moudakis
+        <%
+=begin%>
+#TODO: INSERT USERNAME 
+<%
+=end%>
+    </div>
+    <div class="card-body">
+        <div class="card-text text-start"><%= simple_format(@article.description) %></div>
+        <%= link_to 'Back', articles_path(), class: "btn btn-light text-secondary border-secondary shadow" %>
+        <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-light text-primary border-primary shadow" %>
+        <%= link_to 'Delete', article_path(@article), data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure?' }, class: "btn btn-light text-danger border-danger shadow" %>
+    </div>
+    <div class="card-footer text-muted">
+        <small>Created: <%= time_ago_in_words(@article.created_at) %> ago &ensp;|&ensp; Edited: <%= time_ago_in_words(@article.updated_at) %> ago</small>
+    </div>
+    </div>
+</div>
+</div>

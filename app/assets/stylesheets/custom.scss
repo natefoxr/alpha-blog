@@ -1,0 +1,56 @@
+#container-img {
+    background-image: url('https://images.unsplash.com/photo-1539209741642-df00eae40690?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1443&q=80');
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    border-radius: 5px;
+}
+#big-break {
+    height: 150px;
+}
+.nav-link {
+    color: #fff; 
+    text-decoration: none; 
+    align-items: center;
+}
+.nav-link:hover {
+    color: #fff!important; 
+    text-decoration: underline;
+    animation: slideIn 1s ease-in; 
+}
+.dropdown-item:hover {
+    background-color: #010101;
+    color: #fff;
+}
+html, body {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+#content {
+    flex: 1 0 auto;
+    background: rgb(198,217,183);
+    background: linear-gradient(49deg, rgba(198,217,183,1) 0%, rgba(161,161,161,1) 100%);
+}
+.card-title:hover {
+    text-decoration: underline;
+}
+#return-to-listings:hover {
+    text-decoration: underline!important;
+}
+#submit-button:hover {
+    background-color: #37bbd6;
+    color:#000;
+}
+#footer {
+    flex-shrink: 0;
+}
+#logo {
+    color: white; 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    text-decoration: none; 
+    align-items: center;
+}
