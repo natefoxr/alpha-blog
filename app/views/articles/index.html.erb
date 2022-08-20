@@ -6,12 +6,7 @@
     <div class="col-lg-5 my-2 mx-2">
       <div class="card text-center shadow">
         <div class="card-header fst-italic">
-          by Nathan Moudakis
-          <%
-=begin%>
- #TODO: INSERT USERNAME 
-<%
-=end%>
+          by <%= article.user.username if article.user %>
         </div>
         <div class="card-body">
           <h5 class="card-title"><%= link_to article.title, article_path(article), class: "text-success text-decoration-none" %></h5>
@@ -21,11 +16,6 @@
           <%= link_to 'Delete', article_path(article), data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure?' }, class: "btn btn-light text-danger border-danger shadow" %>
         </div>
         <div class="card-footer text-muted">
-          <%
-=begin%>
- #TODO: Add time zones 
-<%
-=end%>
           <small>Created: <%= time_ago_in_words(article.created_at) %> ago &ensp;|&ensp; Edited: <%= time_ago_in_words(article.updated_at) %> ago</small>
         </div>
       </div>
