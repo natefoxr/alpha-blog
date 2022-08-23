@@ -63,6 +63,13 @@ body {
     font-weight: 700;
     color: #000;
 }
+.dropdown-danger {
+    color: red;
+}
+.dropdown-danger:hover {
+    color: #000;
+    background-color: red;
+}
 
 
 /* Pagination Styling -- apple */
