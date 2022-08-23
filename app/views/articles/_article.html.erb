@@ -5,7 +5,7 @@
       <div class="card text-center shadow">
         <div class="card-header fst-italic">
         <% if article.user %>
-          by <%= link_to article.user.username, user_path(article.user) %>
+          by <%= link_to article.user.username, user_path(article.user), class: "username-css" %>
         <% end %>
         </div>
         <div class="card-body">

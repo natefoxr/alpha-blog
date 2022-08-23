@@ -54,6 +54,17 @@ body {
     text-decoration: none; 
     align-items: center;
 }
+.username-css{
+    text-decoration: none;
+    font-weight: 500;
+    color: #36454F;
+}
+.username-css:hover {
+    font-weight: 700;
+    color: #000;
+}
+
+
 /* Pagination Styling -- apple */
 
 .apple_pagination {
