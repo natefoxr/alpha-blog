@@ -16,12 +16,14 @@
             </li>
             <% if logged_in? %>
               <div class="btn-group">
-                <a type="button" class="btn btn-transparent nav-link border-0 text-white">
-                  <%= link_to current_user.username, user_path(current_user), class: "nav-link text-white" %>
-                </a>
-                <a type="button" class="btn btn-transparent nav-link border-0 text-white dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                <% if current_user.admin? %>
+                  <%= link_to "#{current_user.username} [admin]", user_path(current_user), type: "button", class: "nav-link text-info btn btn-transparent border-0" %>
+                <% else %>
+                  <%= link_to current_user.username, user_path(current_user), type: "button", class: "nav-link text-white btn btn-transparent border-0" %>
+                <% end %>
+                <btn type="button" class="btn btn-transparent nav-link border-0 text-white dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                   <span class="visually-hidden">Toggle Dropdown</span>
-                </a>
+                </btn>
                 <ul class="dropdown-menu">
                   <li>
                     <%= link_to 'View Profile', user_path(current_user), class: "dropdown-item" %>
@@ -32,23 +34,18 @@
                   <li>
                     <%= link_to 'New Article', new_article_path(), class: "dropdown-item" %>
                   </li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li>
-                    <%= link_to 'Delete Account', user_path(current_user), data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure?' }, class: "dropdown-item dropdown-danger" %>
-                  </li>
-                  <li><hr class="dropdown-divider"></li>
+                  <% if current_user.admin? == false %>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                      <%= link_to 'Delete Account', user_path(current_user), data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure, this action cannot be undone?' }, class: "dropdown-item dropdown-danger" %>
+                    </li>
+                  <% end %>
+                  <li><hr class="dropdown-divider"></li>                  
                   <li>
                     <%= link_to 'Logout', logout_path(), data: { "turbo-method": :delete }, class: "dropdown-item" %>
                   </li>
-
                 </ul>
               </div>            
-              <li class="nav-item">
-                
-              </li>            
-              <li class="nav-item">
-                
-              </li>
             <% else %>
               <li class="nav-item">
                 <%= link_to 'Log in', login_path(), class: "nav-link text-light" %>

@@ -15,8 +15,14 @@
             <%= link_to gravatar_for(user, size: 150), user %></h5>
           <p class="card-text"><%= pluralize(user.articles.count, "article") %></p>
           <%= link_to 'View profile', user, class: "btn btn-light text-success border-success shadow" %>
-          <% if logged_in? && user == current_user %>
-            <%= link_to 'Edit profile', edit_user_path(user), class: "btn btn-light text-primary border-primary shadow" %>
+          <% if logged_in? %>
+            <% if user == current_user %>
+              <%= link_to 'Edit profile', edit_user_path(user), class: "btn btn-light text-primary border-primary shadow" %>
+            <% end %>
+            <% if current_user.admin? && !user.admin? %>
+              <%= link_to 'Edit user', edit_user_path(user), class: "btn btn-light text-primary border-primary shadow" %>
+              <%= link_to 'Delete Account', user_path(user), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure you want to delete #{user.username}, this action cannot be undone?" }, class: "btn btn-light text-danger border-danger shadow" %>
+            <% end %>
           <% end %>
         </div>
         <div class="card-footer text-muted">
