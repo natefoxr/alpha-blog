@@ -12,8 +12,11 @@
           <h5 class="card-title"><%= link_to article.title, article_path(article), class: "text-success text-decoration-none" %></h5>
           <p class="card-text"><%= truncate(article.description, length: 100) %></p>
           <%= link_to 'Show', article_path(article), class: "btn btn-light text-success border-success shadow" %>
-          <%= link_to 'Edit', edit_article_path(article), class: "btn btn-light text-primary border-primary shadow" %>
-          <%= link_to 'Delete', article_path(article), data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure?' }, class: "btn btn-light text-danger border-danger shadow" %>
+          <% # Have to check for logged in first in case of no current_user %>
+          <% if logged_in? && article.user == current_user %>
+            <%= link_to 'Edit', edit_article_path(article), class: "btn btn-light text-primary border-primary shadow" %>
+            <%= link_to 'Delete', article_path(article), data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure?' }, class: "btn btn-light text-danger border-danger shadow" %>
+          <% end %>
         </div>
         <div class="card-footer text-muted">
           <small>Created: <%= time_ago_in_words(article.created_at) %> ago &ensp;|&ensp; Edited: <%= time_ago_in_words(article.updated_at) %> ago</small>
