@@ -1,6 +1,9 @@
 <h1 class="text-center mt-4 lead fs-1 fw-bold">Articles Listing Page</h1>
 
+
+<%= will_paginate @articles, class: "apple_pagination" %>
 <%= render'article' %>
+<%= will_paginate @articles, class: "apple_pagination" %>
 
 
 
