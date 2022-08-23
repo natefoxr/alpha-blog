@@ -1,0 +1,19 @@
+<h1 class="text-center mt-4 fw-bold">Categories</h1>
+
+<%= will_paginate @categories, class: "flickr_pagination" %>
+<div class="row justify-content-center mx-2 mb-3">
+  <%= link_to 'Create New Article', new_article_path, class: "btn btn-light border-secondary shadow-3 w-75 py-3 my-4" %>
+  <% @categories.each do |category| %>
+    <div class="col-lg-5 my-2 mx-2">
+      <div class="card text-center shadow">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to category.name, category_path(category), class: "text-success text-decoration-none" %></h5>
+        </div>
+        <div class="card-footer text-muted">
+          <small>Created: <%= time_ago_in_words(category.created_at) %> ago &ensp;|&ensp; Edited: <%= time_ago_in_words(category.updated_at) %> ago</small>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%= will_paginate @categories, class: "flickr_pagination" %>
