@@ -12,17 +12,36 @@
               <%= link_to 'Articles', articles_path(), class: "nav-link text-light" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'New Post', new_article_path(), class: "nav-link text-light" %>
-            </li>
-            <li class="nav-item">
               <%= link_to 'Bloggers', users_path(), class: "nav-link text-light" %>
             </li>
             <% if logged_in? %>
+              <div class="btn-group">
+                <a type="button" class="btn btn-transparent nav-link border-0 text-white">
+                  <%= link_to current_user.username, user_path(current_user), class: "nav-link text-white" %>
+                </a>
+                <a type="button" class="btn btn-transparent nav-link border-0 text-white dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="visually-hidden">Toggle Dropdown</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <%= link_to 'View Profile', user_path(current_user), class: "dropdown-item" %>
+                  </li>
+                  <li>
+                    <%= link_to 'Edit Profile', edit_user_path(current_user), class: "dropdown-item" %>
+                  </li>
+                  <li>
+                    <%= link_to 'New Article', new_article_path(), class: "dropdown-item" %>
+                  </li>
+                  <li>
+                    <%= link_to 'Logout', logout_path(), data: { "turbo-method": :delete }, class: "dropdown-item" %>
+                  </li>
+                </ul>
+              </div>            
               <li class="nav-item">
-                <%= link_to current_user.username, user_path(current_user), class: "nav-link text-light" %>
+                
               </li>            
               <li class="nav-item">
-                <%= link_to 'Logout', logout_path(), data: { "turbo-method": :delete }, class: "nav-link text-light" %>
+                
               </li>
             <% else %>
               <li class="nav-item">
