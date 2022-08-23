@@ -2,19 +2,20 @@
 
 <div class="row justify-content-center mx-2">
 <div class="col-lg-5 my-2 mx-2">
-    <div class="card text-center shadow">
-    <div class="card-header fst-italic">
-        by <%= @article.user.username if @article.user %>
-    </div>
-    <div class="card-body">
-        <div class="card-text text-start"><%= simple_format(@article.description) %></div>
-        <%= link_to 'Back', articles_path(), class: "btn btn-light text-secondary border-secondary shadow" %>
-        <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-light text-primary border-primary shadow" %>
-        <%= link_to 'Delete', article_path(@article), data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure?' }, class: "btn btn-light text-danger border-danger shadow" %>
-    </div>
-    <div class="card-footer text-muted">
-        <small>Created: <%= time_ago_in_words(@article.created_at) %> ago &ensp;|&ensp; Edited: <%= time_ago_in_words(@article.updated_at) %> ago</small>
-    </div>
-    </div>
+  <div class="card text-center shadow">
+  <div class="card-header fs-3 fst-italic">
+      by <%= @article.user.username if @article.user %> 
+      <%= link_to gravatar_for(@article.user, size: 100), user_path(@article.user), class: "gravatar-inline" %>
+  </div>
+  <div class="card-body">
+    <div class="card-text text-start"><%= simple_format(@article.description) %></div>
+    <%= link_to 'Back', articles_path(), class: "btn btn-light text-secondary border-secondary shadow" %>
+    <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-light text-primary border-primary shadow" %>
+    <%= link_to 'Delete', article_path(@article), data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure?' }, class: "btn btn-light text-danger border-danger shadow" %>
+  </div>
+  <div class="card-footer text-muted">
+    <small>Created: <%= time_ago_in_words(@article.created_at) %> ago &ensp;|&ensp; Edited: <%= time_ago_in_words(@article.updated_at) %> ago</small>
+  </div>
+  </div>
 </div>
 </div>
