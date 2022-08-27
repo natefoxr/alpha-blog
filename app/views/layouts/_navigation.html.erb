@@ -14,17 +14,23 @@
             <li class="nav-item">
               <%= link_to 'Bloggers', users_path(), class: "nav-link text-light" %>
             </li>
+            <li class="nav-item">
+              <%= link_to 'Categories', categories_path(), class: "nav-link text-light" %>
+            </li>
             <% if logged_in? %>
-              <div class="btn-group">
+              <div class="btn-group mx-3">
                 <% if current_user.admin? %>
-                  <%= link_to "#{current_user.username} [admin]", user_path(current_user), type: "button", class: "nav-link text-info btn btn-transparent border-0" %>
+                  <%= gravatar_for current_user, size: 40, class: "d-inline" %>
+                  &nbsp;&nbsp;
+                  <%= link_to "#{current_user.username} [admin]", user_path(current_user), type: "button", class: "nav-link text-info btn btn-transparent border-0 d-inline" %>
                 <% else %>
-                  <%= link_to current_user.username, user_path(current_user), type: "button", class: "nav-link text-white btn btn-transparent border-0" %>
+                  <%= gravatar_for current_user, size: 40, class: "d-inline" %>
+                  <%= link_to current_user.username, user_path(current_user), type: "button", class: "nav-link text-white btn btn-transparent border-0 d-inline" %>
                 <% end %>
                 <btn type="button" class="btn btn-transparent nav-link border-0 text-white dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                   <span class="visually-hidden">Toggle Dropdown</span>
                 </btn>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu dropdown-menu-end">
                   <li>
                     <%= link_to 'View Profile', user_path(current_user), class: "dropdown-item" %>
                   </li>
@@ -34,8 +40,10 @@
                   <li>
                     <%= link_to 'New Article', new_article_path(), class: "dropdown-item" %>
                   </li>
-                  <% if current_user.admin? == false %>
-                    <li><hr class="dropdown-divider"></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <% if current_user.admin? %>
+                    <%= link_to 'New Category', new_category_path(), class: "dropdown-item dropdown-primary" %>
+                  <% else %>
                     <li>
                       <%= link_to 'Delete Account', user_path(current_user), data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure, this action cannot be undone?' }, class: "dropdown-item dropdown-danger" %>
                     </li>
