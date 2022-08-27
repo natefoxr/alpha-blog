@@ -1,6 +1,5 @@
 <%= render 'shared/errors', obj: @article %>
 
-
 <%= form_with(model: @article, data: { turbo: false }, local: true) do |f| %>
   <div class="container bg-info p-3 rounded shadow">
     <div class="mb-3 row">
@@ -27,5 +26,5 @@
   </div>
 <% end %>
 <div class="text-center my-3">
-  <%= link_to '[ Cancle and return to articles listing ]', articles_path, class: "text-decoration-none", id: "return-to-listings" %>
+  <%= link_to '[ Cancel and return to articles listing ]', articles_path, class: "text-decoration-none", id: "return-to-listings" %>
 </div>
